@@ -11,7 +11,6 @@ public interface UserService extends UserDetailsService {
     Instead of passing a single piece of information, we can use dto object to pass a bulk amount of information from server and client and vice versa. */
 
     User save(UserRegistrationDto registrationDto);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 
-    @Override
-    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 }
