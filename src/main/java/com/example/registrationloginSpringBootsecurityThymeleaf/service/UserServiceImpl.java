@@ -4,6 +4,8 @@ import com.example.registrationloginSpringBootsecurityThymeleaf.model.Role;
 import com.example.registrationloginSpringBootsecurityThymeleaf.model.User;
 import com.example.registrationloginSpringBootsecurityThymeleaf.repository.UserRepository;
 import com.example.registrationloginSpringBootsecurityThymeleaf.web.dto.UserRegistrationDto;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -21,5 +23,10 @@ public class UserServiceImpl implements UserService{
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getFirstName(), registrationDto.getLastName(), registrationDto.getEmail(), registrationDto.getPassword(), Arrays.asList(new Role("ROLE_USER")));
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }
